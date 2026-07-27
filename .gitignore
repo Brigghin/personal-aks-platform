@@ -1,6 +1,6 @@
 # Node / React / Vite
 app/node_modules/
-*pp/dist*
+app/dist/
 
 # Terraform
 infra/.terraform/
