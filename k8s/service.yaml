@@ -5,7 +5,7 @@ metadata:
   namespace: personal-website
 
 spec:
-  type: LoadBalancer
+  type: ClusterIP
 
   selector:
     app: personal-website
