@@ -11,10 +11,22 @@ spec:
   tls:
   - hosts:
     - brianbargholz.ca
+    - www.brianbargholz.ca
     secretName: brianbargholz-ca-tls
 
   rules:
   - host: brianbargholz.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: personal-website-service
+            port:
+              number: 80
+
+  - host: www.brianbargholz.ca
     http:
       paths:
       - path: /
