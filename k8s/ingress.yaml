@@ -3,10 +3,19 @@ kind: Ingress
 metadata:
   name: personal-website-ingress
   namespace: personal-website
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
+
+  tls:
+  - hosts:
+    - brianbargholz.ca
+    secretName: brianbargholz-ca-tls
+
   rules:
-  - http:
+  - host: brianbargholz.ca
+    http:
       paths:
       - path: /
         pathType: Prefix
