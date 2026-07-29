@@ -3,15 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Welcome') {
+        stage('Verify Repository') {
             steps {
-                echo 'Hello Brian!'
+                echo 'Repository successfully pulled!'
             }
         }
 
-        stage('Repository Check') {
+        stage('Check Docker') {
             steps {
-                echo 'Successfully pulled repository'
+                sh 'docker version'
             }
         }
 
