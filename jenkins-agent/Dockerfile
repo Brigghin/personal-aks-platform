@@ -8,7 +8,8 @@ RUN apt-get update && \
     curl \
     unzip
 
-RUN curl -LO https://dl.k8s.io/release/v1.34.0/bin/linux/amd64/kubectl && \
+RUN ARCH=$(dpkg --print-architecture) && \
+    curl -LO https://dl.k8s.io/release/v1.34.0/bin/linux/${ARCH}/kubectl && \
     chmod +x kubectl && \
     mv kubectl /usr/local/bin/
 
