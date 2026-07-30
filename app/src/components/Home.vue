@@ -2,20 +2,26 @@
 </script>
 
 <template>
-  <section class="home">
+  <section class="home" id="home">
     <div class="container">
-      <p class="intro">Hi, I'm Brian.</p>
+      <p class="intro">Hi, I'm Brian</p>
 
       <h1>
-        Infrastructure Specialist Co-op
-        <br />
-        & Developer
+        Aspiring Cloud & DevOps Engineer
       </h1>
 
-      <p class="description">
-        I build cloud infrastructure, automation tools, and software projects
-        while learning in public.
+      <p class="subtitle">
+        Cloud Infrastructure • DevOps • Automation
       </p>
+
+      <p class="description">
+        I build scalable cloud infrastructure and automate workflows
+        to create reliable, efficient, and modern platforms.
+      </p>
+
+      <div class="scroll-indicator">
+        ↓
+      </div>
     </div>
   </section>
 </template>
@@ -25,42 +31,45 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 0 2rem;
+  text-align: center;
 }
 
 .intro {
-  color: var(--accent);
-  font-size: 1rem;
+  color: var(--text-muted);
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 4rem;
-  line-height: 1.1;
-  font-weight: 600;
-  margin-bottom: 2rem;
+  font-size: clamp(4rem, 1vw, 8rem);
+  line-height: 0.95;
+  font-weight: 400;
   color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
 }
 
 .description {
+  max-width: 650px;
+  margin: 0 auto;
   font-size: 1.2rem;
   line-height: 1.8;
-  max-width: 650px;
-  color: var(--text-muted);
+  color: var(--text);
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
+.scroll-indicator {
+  margin-top: 5rem;
+  font-size: 3rem;
+  color: var(--text);
 }
 </style>

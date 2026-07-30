@@ -1,8 +1,8 @@
 :root {
   --bg: #1b4332;
   --text: #f8f9fa;
-  --text-muted: #d8f3dc;
-  --accent: #c57300;
+  --text-muted: #d6d6d6;
+  --accent: #d18800d5;
 
   font-family: Consolas, monospace;
 }
