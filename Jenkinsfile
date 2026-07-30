@@ -1,4 +1,7 @@
 pipeline {
+    trigger {
+        githubPush()
+    }
     agent {
         kubernetes {
             yaml '''
