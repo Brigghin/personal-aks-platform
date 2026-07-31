@@ -24,7 +24,21 @@
       </div>
 
       <article class="info-card experience">
-        <h2>Experience</h2>
+        <div class="experience-header">
+          <h2>Experience</h2>
+          <a
+            class="linkedin-link"
+            href="https://ca.linkedin.com/in/brian-bargholz"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M8.2 9.8h2.8v8.2H8.2V9.8Zm1.4-4.1a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM13.2 9.8h2.7v1.12h.04c.38-.72 1.3-1.48 2.68-1.48 2.87 0 3.4 1.88 3.4 4.33V18h-2.8v-16.3z" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
 
         <div class="timeline">
           <div class="timeline-item">
@@ -67,8 +81,9 @@
 }
 
 .about-grid {
-  width: 100%;
+  width: min(100%, 1100px);
   height: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 1.25rem;
@@ -92,15 +107,53 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
 }
 
 .info-card h2 {
-  margin: 0 0 0.9rem;
+  margin: 0;
   font-size: clamp(1.45rem, 1.8vw, 2.2rem);
   line-height: 1.3;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text);
+}
+
+.linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.linkedin-link:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.linkedin-link svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.linkedin-link rect {
+  fill: var(--accent);
+}
+
+.linkedin-link path {
+  fill: #1b4332;
 }
 
 .info-card p {

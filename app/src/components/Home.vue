@@ -15,7 +15,7 @@
         I build scalable cloud infrastructure and automate workflows
       </p>
 
-      <div class="scroll-indicator">↓</div>
+      <a class="scroll-indicator" href="#about" aria-label="Scroll to About section">↓</a>
     </div>
   </section>
 </template>
