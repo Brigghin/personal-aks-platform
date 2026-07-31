@@ -133,7 +133,7 @@
     top: 100%;
     transform: translateX(-65%);
     position: absolute;
-    margin-top: 0.75rem;
+    margin-top: 1.25rem;
   }
 }
 </style>
