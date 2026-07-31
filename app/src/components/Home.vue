@@ -100,5 +100,6 @@ h1 {
   font-size: 3rem;
   color: var(--text);
   line-height: 1;
+  text-decoration: none;
 }
 </style>

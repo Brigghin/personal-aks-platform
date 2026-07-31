@@ -3,7 +3,7 @@ import Home from './components/Home.vue'
 import Navbar from './components/Navbar.vue'
 import About from './components/About.vue'
 import Projects from './components/Projects.vue'
-import End from './components/End.vue'
+import Contact from './components/Contact.vue'
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import End from './components/End.vue'
   <Home />
   <About />
   <Projects />
-  <End />
+  <Contact />
 </template>
 
 <style>

@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <footer class="end" id="end">
-    <div class="end-content">
+  <footer class="contact" id="contact">
+    <div class="contact-content">
       <p class="thanks">Thanks for reading this far.</p>
 
       <a class="email-link" href="mailto:brianbargholz@gmail.com">
@@ -31,13 +31,13 @@
 </template>
 
 <style scoped>
-.end {
+.contact {
   width: 100%;
   padding: 3rem 1.5rem 5rem;
   box-sizing: border-box;
 }
 
-.end-content {
+.contact-content {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
