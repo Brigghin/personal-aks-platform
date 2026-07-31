@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: personal-website
-        image: brigghinwebsiteacr.azurecr.io/personal-website:v3
+        image: brigghinwebsiteacr.azurecr.io/personal-website:latest
+        imagePullPolicy: Always
 
         ports:
         - containerPort: 80
