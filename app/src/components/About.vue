@@ -9,7 +9,7 @@
         <p>
           I’m a passionate cloud and DevOps-focused engineer with a strong interest
           in building resilient systems, automating workflows, and creating
-          scalable infrastructure solutions. TEST TEST TEST.
+          scalable infrastructure solutions.
         </p>
       </article>
 
@@ -35,27 +35,35 @@
 
 <style scoped>
 .about {
-  padding: 6rem 2rem;
+  width: 100%;
+  height: 100vh;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
 }
 
 .about-grid {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 .info-card {
+  height: 100%;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 2rem;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .info-card h2 {
   margin: 0 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--text);
 }
 
@@ -66,8 +74,19 @@
 }
 
 @media (max-width: 700px) {
+  .about {
+    height: auto;
+    padding: 1rem;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .info-card {
+    height: auto;
+    padding: 2.5rem 1.5rem;
   }
 }
 </style>

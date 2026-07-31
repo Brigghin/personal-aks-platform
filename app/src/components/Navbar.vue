@@ -7,7 +7,6 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -16,19 +15,24 @@
 
 <style scoped>
 .navbar {
-  position: static;
   width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
-  z-index: 1;
+  box-sizing: border-box;
 }
 
 .container {
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 1.5rem 2rem 1rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .nav-links {
