@@ -4,17 +4,13 @@
 <template>
   <section class="home" id="home">
     <div class="container">
-      <p class="intro">Hi, I'm Brian</p>
+      <p class="intro">Hi, I'm Brian,</p>
 
       <h1>
         Aspiring Cloud & DevOps Engineer
       </h1>
 
       <p class="subtitle">
-        Cloud Infrastructure • DevOps • Automation
-      </p>
-
-      <p class="description">
         I build scalable cloud infrastructure and automate workflows
         to create reliable, efficient, and modern platforms.
       </p>
@@ -28,21 +24,32 @@
 
 <style scoped>
 .home {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 1rem; /* keeps same visual spacing as the old fixed nav */
+  padding-bottom: 12vh;
+  box-sizing: border-box;
 }
 
 .container {
-  padding: 0 2rem;
+  position: relative;
+  width: min(100%, 1200px);
+  padding: 0 4rem;
   text-align: center;
+  min-height: calc(100vh - 24vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .intro {
   color: var(--text-muted);
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin: 0 0 4rem;
 }
 
 h1 {
@@ -50,25 +57,21 @@ h1 {
   line-height: 0.95;
   font-weight: 400;
   color: var(--text);
-  margin-bottom: 1.5rem;
+  margin: 0 0 4rem;
 }
 
 .subtitle {
   font-size: 1.6rem;
   color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-.description {
-  max-width: 650px;
-  margin: 0 auto;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--text);
+  margin: 0 0 2rem;
 }
 
 .scroll-indicator {
-  margin-top: 5rem;
+  position: absolute;
+  left: 50%;
+  bottom: 2vh;
+  transform: translateX(-50%);
+  margin: 0;
   font-size: 3rem;
   color: var(--text);
 }
