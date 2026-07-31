@@ -19,10 +19,49 @@ spec:
 
     stages {
 
+        stage('Clean Workspace') {
+            steps {
+                echo 'Cleaning Jenkins workspace...'
+                deleteDir()
+            }
+        }
+
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/Brigghin/personal-aks-platform.git'
+                echo 'Checking out latest code from GitHub main branch...'
+
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/Brigghin/personal-aks-platform.git'
+                    ]],
+                    extensions: [
+                        [$class: 'CleanBeforeCheckout'],
+                        [$class: 'CleanAfterCheckout']
+                    ]
+                ])
+
+                sh '''
+                echo "Latest Git commit:"
+                git log -1 --oneline
+
+                echo
+                echo "Current branch:"
+                git branch --show-current || true
+
+                echo
+                echo "Workspace contents:"
+                ls -la
+
+                echo
+                echo "App folder contents:"
+                ls -la app
+
+                echo
+                echo "Dockerfile being used:"
+                cat app/Dockerfile
+                '''
             }
         }
 
@@ -38,6 +77,8 @@ spec:
                     ]) {
 
                         sh '''
+                        set -e
+
                         mkdir -p /kaniko/.docker
 
                         AUTH=$(echo -n "$ACR_USER:$ACR_PASS" | base64 | tr -d '\\n')
@@ -52,13 +93,22 @@ spec:
 }
 EOF
 
-                        echo "Building image..."
+                        echo "Building image from:"
+                        echo "$WORKSPACE/app"
+
+                        echo
+                        echo "Build number:"
+                        echo "$BUILD_NUMBER"
+
+                        echo
+                        echo "Building and pushing image..."
 
                         /kaniko/executor \
                           --context=$WORKSPACE/app \
                           --dockerfile=$WORKSPACE/app/Dockerfile \
                           --destination=brigghinwebsiteacr.azurecr.io/personal-website:${BUILD_NUMBER} \
-                          --destination=brigghinwebsiteacr.azurecr.io/personal-website:latest
+                          --destination=brigghinwebsiteacr.azurecr.io/personal-website:latest \
+                          --cache=false
 
                         echo "Build completed."
                         '''
@@ -72,12 +122,27 @@ EOF
                 sh '''
                 set -e
 
-                echo "Updating deployment..."
+                echo "Updating deployment image..."
 
                 kubectl set image deployment/personal-website-v3 \
                   personal-website=brigghinwebsiteacr.azurecr.io/personal-website:${BUILD_NUMBER} \
                   -n personal-website
 
+                echo
+                echo "Ensuring imagePullPolicy is Always..."
+
+                kubectl patch deployment personal-website-v3 \
+                  -n personal-website \
+                  --type='json' \
+                  -p='[
+                    {
+                      "op": "replace",
+                      "path": "/spec/template/spec/containers/0/imagePullPolicy",
+                      "value": "Always"
+                    }
+                  ]' || true
+
+                echo
                 echo "Waiting for rollout..."
 
                 if ! kubectl rollout status deployment/personal-website-v3 \
@@ -111,6 +176,15 @@ EOF
                 kubectl get deployment personal-website-v3 \
                   -n personal-website \
                   -o jsonpath="{.spec.template.spec.containers[0].image}"
+
+                echo
+                echo
+
+                echo "Current imagePullPolicy:"
+
+                kubectl get deployment personal-website-v3 \
+                  -n personal-website \
+                  -o jsonpath="{.spec.template.spec.containers[0].imagePullPolicy}"
 
                 echo
                 echo
