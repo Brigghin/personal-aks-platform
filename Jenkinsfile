@@ -28,39 +28,18 @@ spec:
 
         stage('Checkout') {
             steps {
-                echo 'Checking out latest code from GitHub main branch...'
+                deleteDir()
 
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/Brigghin/personal-aks-platform.git'
-                    ]],
-                    extensions: [
-                        [$class: 'CleanBeforeCheckout'],
-                        [$class: 'CleanAfterCheckout']
-                    ]
-                ])
+                git branch: 'main',
+                    url: 'https://github.com/Brigghin/personal-aks-platform.git'
 
                 sh '''
-                echo "Latest Git commit:"
+                echo "Latest Commit:"
                 git log -1 --oneline
 
                 echo
-                echo "Current branch:"
-                git branch --show-current || true
-
-                echo
-                echo "Workspace contents:"
-                ls -la
-
-                echo
-                echo "App folder contents:"
+                echo "App Contents:"
                 ls -la app
-
-                echo
-                echo "Dockerfile being used:"
-                cat app/Dockerfile
                 '''
             }
         }
