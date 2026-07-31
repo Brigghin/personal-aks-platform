@@ -33,9 +33,8 @@
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M8.2 9.8h2.8v8.2H8.2V9.8Zm1.4-4.1a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM13.2 9.8h2.7v1.12h.04c.38-.72 1.3-1.48 2.68-1.48 2.87 0 3.4 1.88 3.4 4.33V18h-2.8v-16.3z" fill="currentColor"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="50" height="50">
+              <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zm-46.44-340.7C24.3 107.3 0 82.9 0 53.6 0 24.3 24.3 0 53.84 0s53.84 24.3 53.84 53.6c0 29.3-24.3 53.7-53.84 53.7zM447.9 448h-92.68V302.4c0-34.7-12.4-58.4-43.4-58.4-23.7 0-37.8 15.9-44 31.3-2.3 5.6-2.8 13.4-2.8 21.3V448h-92.68s1.2-241.3 0-266.1h92.68v37.7c12.3-19 34.3-46 83.4-46 60.9 0 106.6 39.7 106.6 125.1V448z"/>
             </svg>
           </a>
         </div>
@@ -143,8 +142,8 @@
 }
 
 .linkedin-link svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   display: block;
 }
 
@@ -153,7 +152,7 @@
 }
 
 .linkedin-link path {
-  fill: #1b4332;
+  fill: var(--accent);
 }
 
 .info-card p {

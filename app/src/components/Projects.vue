@@ -108,8 +108,8 @@
 }
 
 .github-link svg {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1.25rem;
+  height: 1.25rem;
   display: block;
   fill: currentColor;
 }
