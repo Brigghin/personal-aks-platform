@@ -8,17 +8,19 @@
         <article class="info-card">
           <h2>About</h2>
           <p>
-            I’m a passionate cloud and DevOps-focused engineer with a strong interest
-            in building resilient systems, automating workflows, and creating
-            scalable infrastructure solutions.
+            I’m a fresh graduate with a passion for cloud computing, DevOps, and infrastructure automation. I have 
+            experience working with cloud platforms, containerization, and CI/CD pipelines. 
+            I enjoy building scalable systems, optimizing workflows, and exploring new technologies to solve complex problems.
           </p>
         </article>
 
         <article class="info-card">
           <h2>Education</h2>
           <p>
-            My background is rooted in technology and problem-solving, with a focus
-            on modern cloud practices, systems design, and engineering workflows.
+            As of August 2027, I will have completed my Bachelor of Science in Computer Science 
+            with a minor in psychology at the University of Victoria. I also have multiple certifications 
+            including COMPTIA A+, Network+, and Microsoft AZ-900. I am always looking to expand my knowledge and 
+            skills in the field of technology, and I am committed to continuous learning and professional development.
           </p>
         </article>
       </div>
@@ -43,12 +45,14 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <span class="timeline-date">2024 — Present</span>
-              <h3>Cloud & DevOps Engineer</h3>
+              <span class="timeline-date"> May 2026 — December 2026</span>
+              <h3>Junior Infrastructure Specialist (Internship)</h3>
               <p>
-                Designing and automating scalable infrastructure, deployment
-                pipelines, and Kubernetes-based systems to improve reliability
-                and delivery speed.
+                Supported enterprise cloud and infrastructure operations through automation, 
+                system administration, endpoint management, and Azure-based solutions. 
+                Worked on operational improvements, compliance reporting, and infrastructure 
+                modernization projects while gaining hands-on experience with cloud platforms, 
+                IaC, scripting, and DevOps practices in a large-scale financial services organization.
               </p>
             </div>
           </div>
@@ -56,12 +60,15 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-              <span class="timeline-date">2022 — 2024</span>
-              <h3>Infrastructure Automation</h3>
+              <span class="timeline-date">May 2025 — August 2025</span>
+              <h3>IT Support Technician (Internship)</h3>
               <p>
-                Built CI/CD workflows and managed cloud resources with a focus on
-                repeatability, observability, and reducing manual operational
-                overhead.
+                Supported enterprise IT infrastructure for the Department of National Defence through device deployment, 
+                Windows administration, incident resolution, asset management, and 
+                lifecycle operations. Developed practical experience in 
+                infrastructure support, system provisioning, troubleshooting, 
+                and IT service management while working within a large-scale, 
+                security-conscious environment.
               </p>
             </div>
           </div>
@@ -201,7 +208,7 @@
   width: 12px;
   height: 12px;
   margin-top: 0.7rem;
-  margin-left: 3px;
+  margin-left: 2px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid rgba(255, 255, 255, 0.25);
@@ -240,7 +247,7 @@
   font-weight: 400;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .about {
     height: auto;
     padding: 1rem;

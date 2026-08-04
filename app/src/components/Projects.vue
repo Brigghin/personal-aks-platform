@@ -23,31 +23,76 @@
 
     <div class="projects-grid">
       <article class="project-card">
-        <span class="project-tag">Cloud Infrastructure</span>
-        <h3>AKS Platform Automation</h3>
+        <span class="project-tag">Cloud Infrastructure & DevOps</span>
+        <h3>Personal Cloud Platform
+        <a
+          class="github-link"
+          href="https://github.com/Brigghin/personal-aks-platform"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.33-3.36-1.33-.45-1.14-1.1-1.45-1.1-1.45-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.54 2.35 1.1 2.92.84.09-.65.35-1.1.63-1.35-2.21-.25-4.54-1.1-4.54-4.9 0-1.08.39-1.97 1.03-2.67-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02A9.57 9.57 0 0 1 12 6.84c.85 0 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.41.1 2.66.64.7 1.03 1.59 1.03 2.67 0 3.81-2.33 4.64-4.55 4.89.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z"/>
+          </svg>
+        </a>
+        </h3>
         <p>
-          Built and managed Kubernetes infrastructure with repeatable deployment
-          workflows, security controls, and operational automation.
+          Designed and implemented a cloud-native personal website platform on
+          Azure Kubernetes Service (AKS) with CI/CD pipelines, automated deployments, and
+          infrastructure as code (IaC) using Terraform and Jenkins. The website you are
+          currently viewing is hosted on this platform.
         </p>
       </article>
 
       <article class="project-card">
-        <span class="project-tag">DevOps</span>
-        <h3>CI/CD Pipelines</h3>
+        <span class="project-tag">PowerShell Automation</span>
+        <h3>Infrastructure & Automation Toolkit
+        <a
+          class="github-link"
+          href="https://github.com/Brigghin/PowerShellScripts"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.33-3.36-1.33-.45-1.14-1.1-1.45-1.1-1.45-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.54 2.35 1.1 2.92.84.09-.65.35-1.1.63-1.35-2.21-.25-4.54-1.1-4.54-4.9 0-1.08.39-1.97 1.03-2.67-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02A9.57 9.57 0 0 1 12 6.84c.85 0 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.41.1 2.66.64.7 1.03 1.59 1.03 2.67 0 3.81-2.33 4.64-4.55 4.89.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z"/>
+          </svg>
+        </a>
+        </h3>
         <p>
-          Designed delivery pipelines to streamline deployments, improve release
-          confidence, and reduce manual setup across environments.
+          A collection of PowerShell automation scripts focused on 
+          infrastructure operations, compliance reporting, device 
+          management, and workflow automation. Built to reduce manual 
+          effort, improve consistency, and streamline day-to-day IT 
+          administration.
         </p>
       </article>
 
       <article class="project-card">
-        <span class="project-tag">Systems</span>
-        <h3>Platform Reliability</h3>
+        <span class="project-tag">Python App Development </span>
+        <h3>Medical Clinic Management System
+        <a
+          class="github-link"
+          href="https://github.com/Brigghin/Mock-Health-Clinic-Program"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.33-3.36-1.33-.45-1.14-1.1-1.45-1.1-1.45-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.54 2.35 1.1 2.92.84.09-.65.35-1.1.63-1.35-2.21-.25-4.54-1.1-4.54-4.9 0-1.08.39-1.97 1.03-2.67-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02A9.57 9.57 0 0 1 12 6.84c.85 0 1.71.12 2.51.35 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.41.1 2.66.64.7 1.03 1.59 1.03 2.67 0 3.81-2.33 4.64-4.55 4.89.36.31.68.92.68 1.86v2.76c0 .27.18.59.69.49A10 10 0 0 0 12 2Z"/>
+          </svg>
+        </a>
+        </h3>
         <p>
-          Focused on resilience, observability, and infrastructure consistency to
-          help teams deliver stable services with less operational overhead.
+          Developed a mock medical clinic management system in Python 
+          using object-oriented programming and the MVC design pattern. 
+          The application features patient and note management, 
+          persistent data storage, a PyQt6 user interface, and 
+          automated testing to support reliability and maintainability.
         </p>
       </article>
+
     </div>
   </section>
 </template>
@@ -56,14 +101,22 @@
 .projects {
   width: 100%;
   min-height: 100vh;
-  padding: 5rem 1.5rem 4rem;
+  padding: 5rem 1rem 4rem;
   box-sizing: border-box;
 }
 
 .section-header {
-  max-width: 1100px;
+  width: min(100%, 1100px);
   margin: 0 auto 2rem;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.projects-grid {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 .eyebrow {
@@ -91,7 +144,13 @@
   color: var(--text);
 }
 
+.title-row .github-link {
+  top: 0;
+}
+
 .github-link {
+  position: relative;
+  top: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -115,9 +174,8 @@
 }
 
 .projects-grid {
-  max-width: 1100px;
+  width: min(100%, 1100px);
   margin: 0 auto;
-  padding: 0 1rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
@@ -154,17 +212,7 @@
   font-size: 0.98rem;
 }
 
-@media (max-width: 800px) {
-  .projects {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .section-header,
-  .projects-grid {
-    padding: 0;
-  }
-
+@media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }

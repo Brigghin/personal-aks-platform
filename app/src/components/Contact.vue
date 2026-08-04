@@ -4,10 +4,10 @@
 <template>
   <footer class="contact" id="contact">
     <div class="contact-content">
-      <p class="thanks">Thanks for reading this far.</p>
+      <p class="thanks">If you have gotten this far, thank you for reading!</p>
 
       <a class="email-link" href="mailto:brianbargholz@gmail.com">
-        brianbargholz@gmail.com
+        For questions or inquiries, you can reach me at <br />brianbargholz@gmail.com
       </a>
 
       <div class="social-links">

@@ -76,7 +76,7 @@
 
 h1 {
   font-size: clamp(3.8rem, 5vw, 8rem);
-  line-height: 0.95;
+  line-height: 1.05;
   font-weight: 400;
   color: var(--text);
   margin: 0 0 2.5rem;
@@ -98,8 +98,13 @@ h1 {
   bottom: 5vh;
   transform: translateX(-50%);
   font-size: 3rem;
-  color: var(--text);
+  color: var(--text-muted);
   line-height: 1;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.scroll-indicator:hover {
+  color: white;
 }
 </style>
