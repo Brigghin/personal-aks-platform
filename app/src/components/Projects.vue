@@ -209,7 +209,8 @@
   margin: 0;
   color: var(--text-muted);
   line-height: 1.6;
-  font-size: 0.98rem;
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  font-weight: 400;
 }
 
 @media (max-width: 900px) {

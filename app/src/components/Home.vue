@@ -76,7 +76,7 @@
 
 h1 {
   font-size: clamp(3.8rem, 5vw, 8rem);
-  line-height: 1.05;
+  line-height: 1.10;
   font-weight: 400;
   color: var(--text);
   margin: 0 0 2.5rem;
