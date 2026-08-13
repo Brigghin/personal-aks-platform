@@ -5,6 +5,9 @@ metadata:
   namespace: argocd
 
 spec:
+  commonUpdateSettings:
+    pullSecret: acr-creds
+
   applicationRefs:
     - namePattern: personal-website
       useAnnotations: true
