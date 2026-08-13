@@ -1,33 +1,33 @@
-resource "azurerm_resource_group" "main" {
-  name     = var.resource_group_name
-  location = var.location
+module "rg" {
+  source              = "./Modules/rg"
+  resource_group_name = var.resource_group_name
+  location            = var.location
 }
 
-resource "azurerm_container_registry" "main" {
-  name                = var.acr_name
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-  sku                 = "Basic"
-  admin_enabled       = true
+module "acr" {
+  source              = "./Modules/acr"
+  resource_group_name = module.rg.resource_group_name
+  location            = var.location
+  acr_name            = var.acr_name
 }
 
-resource "azurerm_kubernetes_cluster" "aks" {
-  name                = var.aks_name
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
-  dns_prefix          = "personalwebsite"
+module "aks" {
+  source              = "./Modules/aks"
+  resource_group_name = module.rg.resource_group_name
+  location            = var.location
+  aks_name            = var.aks_name
+}
 
-  default_node_pool {
-    name       = "system"
-    node_count = 1
-    vm_size    = "Standard_B2ps_v2"
-  }
+module "user_assigned_identity" {
+  source              = "./Modules/uai"
+  resource_group_name = module.rg.resource_group_name
+  location            = var.location
+  uai_name            = var.uai_name
+}
 
-  identity {
-    type = "SystemAssigned"
-  }
-
-  tags = {
-    Environment = "Dev"
-  }
+module "role_assignment" {
+  source               = "./Modules/ra"
+  scope                = module.acr.acr_id
+  role_definition_name = var.role_definition_name
+  principal_id         = module.user_assigned_identity.uai_principal_id
 }

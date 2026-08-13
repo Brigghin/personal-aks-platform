@@ -1,15 +1,15 @@
-variable "resource_group_name" {
-  description = "Name of the resource group"
+variable "acr_name" {
+  description = "Name of the Azure Container Registry"
   type        = string
 }
 
 variable "location" {
-  type    = string
-  default = "Canada Central"
+  description = "Location of the Azure Container Registry"
+  type        = string
 }
 
-variable "acr_name" {
-  description = "Name of the Azure Container Registry"
+variable "resource_group_name" {
+  description = "Name of the resource group"
   type        = string
 }
 
@@ -18,3 +18,12 @@ variable "aks_name" {
   type        = string
 }
 
+variable "uai_name" {
+  description = "Name of the user-assigned identity"
+  type        = string
+}
+
+variable "role_definition_name" {
+  description = "Name of the role definition"
+  type        = string
+}

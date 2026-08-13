@@ -17,7 +17,7 @@ grafana:
   persistence:
     enabled: true
     size: 10Gi
-
+    
 prometheus:
   prometheusSpec:
     storageSpec:
