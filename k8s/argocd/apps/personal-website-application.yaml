@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: personal-website
+  namespace: argocd
+
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Brigghin/personal-aks-platform.git
+    targetRevision: HEAD
+    path: k8s/personal-website
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: personal-website
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
