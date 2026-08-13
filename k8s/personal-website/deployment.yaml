@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: personal-website
-        image: brigghinwebsiteacr.azurecr.io/personal-website:latest
+        image: brigghinwebsiteacr.azurecr.io/personal-website
         imagePullPolicy: Always
 
         ports:
