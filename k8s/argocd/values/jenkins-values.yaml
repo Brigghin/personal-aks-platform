@@ -1,7 +1,8 @@
 controller:
   admin:
-    username: admin
-    password: ChangeThisPasswordLater123!
+    existingSecret: jenkins-admin-secret
+    userKey: jenkins-admin-user
+    passwordKey: jenkins-admin-password
 
   serviceType: ClusterIP
 
