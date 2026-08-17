@@ -27,3 +27,13 @@ variable "role_definition_name" {
   description = "Name of the role definition"
   type        = string
 }
+
+variable "kv_name" {
+  description = "Name of the Azure Key Vault"
+  type        = string
+}
+
+variable "eso_name" {
+  description = "Name of the Eso Uai"
+  type        = string
+}
