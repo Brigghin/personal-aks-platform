@@ -29,6 +29,9 @@ Implements the App of Apps pattern. This root application serves as the entry po
 personal-website/
 Contains the Kubernetes manifests required to deploy the personal website.
 
+external-secrets/
+Contains the External Secrets Operator (ESO) configuration used to integrate Azure Key Vault with Kubernetes. ESO synchronizes secrets from Azure Key Vault into Kubernetes Secrets using Azure Workload Identity, enabling applications to consume sensitive credentials without storing them directly in Git.
+
 # Ongoing Updates
 
 Application updates follow a CI/CD and GitOps workflow that combines Jenkins, Azure Container Registry (ACR), GitHub, and ArgoCD.

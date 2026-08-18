@@ -14,6 +14,7 @@ This project showcases the design and operation of a production-ready platform u
 - **CI/CD**: Jenkins pipelines for automated build and image publishing
 - **Monitoring & Observability**: Prometheus and Grafana for metrics and dashboards
 - **Identity & Security**: Azure Workload Identity for secure pod authentication
+- **Secret Management**: Azure Key Vault, External Secrets Operator (ESO), and Azure Workload Identity for secure credential management
 - **Web Framework**: Vue.js + Vite for the personal website frontend
 
 # Architecture
@@ -37,11 +38,18 @@ Azure Infrastructure
 │   ├── OIDC issuer enabled
 │   └── Cluster-level monitoring
 ├── Azure Container Registry (ACR)
+├── Azure Key Vault
 ├── User Assigned Managed Identity
 └── RBAC Role Assignments
         │
-        ▼
-Jenkins Pipeline
+        ├──────────────┐
+        │              │
+        ▼              ▼
+Jenkins Pipeline    External Secrets Operator
+        │              │
+        │              ├─ Authenticate using Workload Identity
+        │              ├─ Read secrets from Azure Key Vault
+        │              └─ Create Kubernetes Secrets
         │
         ├─ Build Docker Image
         │
@@ -58,6 +66,7 @@ Jenkins Pipeline
                 ├─ ArgoCD Application
                 ├─ Jenkins Application
                 ├─ Monitoring Application
+                ├─ External Secrets Application
                 └─ Personal Website Application
                         │
                         ▼
@@ -65,7 +74,18 @@ Jenkins Pipeline
         ├── ArgoCD (GitOps management)
         ├── Jenkins (CI/CD automation)
         ├── Prometheus + Grafana (Monitoring)
+        ├── External Secrets Operator
         └── Personal Website (Vue.js application)
+
+Azure Key Vault
+        │
+        ▼
+External Secrets Operator
+        │
+        ▼
+Kubernetes Secrets
+        ├── Jenkins Credentials
+        └── Grafana Credentials
 ```
 
 # Technology Stack
@@ -83,6 +103,7 @@ Jenkins Pipeline
 | **Monitoring & Observability** | Prometheus, Grafana, kube-prometheus-stack |
 | **Web Framework** | Vue.js + Vite |
 | **HTTPS/TLS** | cert-manager with Let's Encrypt |
+| **Secret Managment** | Azure Key Vault, External Secrets Operator (ESO) |
 
 # Infrastructure Components
 
@@ -93,6 +114,7 @@ Terraform provisions and manages all Azure resources through modular configurati
 - **ACR Module** (`Modules/acr`): Container registry for storing application images
 - **User Assigned Identity Module** (`Modules/uai`): Managed identity for pod authentication
 - **Role Assignment Module** (`Modules/ra`): RBAC configurations for service principal access
+- **Azure Key Vault** (`Modules/kv`): Centralized storage for application and platform secrets synchronized into Kubernetes through External Secrets Operator
 
 All infrastructure is version-controlled and deployed consistently through Infrastructure as Code principles.
 
@@ -107,6 +129,7 @@ Root Application
 ├── ArgoCD Application (Self-management)
 ├── Jenkins Application (CI/CD platform)
 ├── Monitoring Application (Prometheus + Grafana)
+├── External Secrets Application (Key Vault integration)
 └── Personal Website Application (Vue.js frontend)
 ```
 
@@ -205,62 +228,16 @@ Because all application configuration lives in Git, disaster recovery is simplif
 - **Automated CI/CD Pipelines**: Jenkins for building, testing, and publishing container images
 - **Azure Workload Identity**: Pod-level authentication without storing credentials in secrets
 - **Monitoring & Observability**: Prometheus for metrics collection and Grafana for visualization
+- **External Secrets Operator (ESO)**: Automated synchronization of secrets from Azure Key Vault into Kubernetes
+- **Azure Key Vault Integration**: Centralized secret management for platform credentials
+- **Workload Identity Federation**: Secure Azure authentication without storing service principal credentials
 - **HTTPS/TLS Automation**: cert-manager with Let's Encrypt for automatic certificate management
 - **Version-Controlled Everything**: Infrastructure, applications, and configuration managed in Git
 - **Disaster Recovery**: Entire platform recoverable from Git after infrastructure recreation
 - **Custom Build Environment**: Purpose-built Jenkins agent Docker image with required tools
-# Project Status
 
-## ✅ Implemented & Operational
 
-### Infrastructure
-- Azure Resource Group provisioning via Terraform
-- Azure Kubernetes Service (AKS) with Workload Identity enabled
-- OIDC issuer configuration for pod-level identity federation
-- Azure Container Registry (ACR) for image management
-- User Assigned Managed Identity with proper RBAC
-- Terraform modularization across multiple reusable modules
-
-### Kubernetes & GitOps
-- ArgoCD v3.5.0 deployed and operational
-- ArgoCD App of Apps pattern fully implemented
-- Root application managing all child applications
-- Namespace isolation and resource organization
-- Automatic application discovery and synchronization
-
-### Applications & Services
-- **Personal Website**: Vue.js + Vite frontend deployed on AKS
-- **Jenkins**: CI/CD automation platform with custom agent image
-- **Monitoring**: Prometheus + Grafana stack for metrics and visualization
-- **ArgoCD**: Self-managed through GitOps pattern
-
-### CI/CD & Deployment
-- Jenkins pipelines for automated builds
-- Docker image building and ACR publishing
-- GitHub webhook integration with Jenkins
-- Kubernetes manifest updates via Git
-- ArgoCD-driven application synchronization
-
-### Security & Identity
-- Azure Workload Identity for pod authentication
-- RBAC configurations for service principals
-- ACR pull access via federated identity
-- No credential storage in application secrets
-
-### Additional Features
-- HTTPS/TLS support via cert-manager and Let's Encrypt
-- Custom Jenkins agent Docker image with build tools
-- Full platform reconstruction capability from Git
-- Comprehensive monitoring and logging foundation
-
-## 📋 Architecture & Documentation
-
-- Well-organized project structure with modular design
-- Documented deployment workflows
-- App of Apps pattern for scalable application management
-- Git as the single source of truth for infrastructure and applications
 # Directory Structure
-
 ```
 personal-aks-platform/
 ├── infra/                          # Terraform Infrastructure as Code
@@ -299,6 +276,11 @@ personal-aks-platform/
 │   │       ├── argocd-values.yaml
 │   │       ├── jenkins-values.yaml
 │   │       └── monitoring-values.yaml
+│   ├── external-secrets/
+│   │   ├── namespace.yaml
+│   │   ├── secret-store.yaml
+│   │   ├── jenkins-admin-secret.yaml
+│   │   └── grafana-admin-secret.yaml
 │   └── personal-website/
 │       ├── namespace.yaml
 │       ├── deployment.yaml
@@ -328,45 +310,5 @@ This project demonstrates practical experience with:
 - **Platform Engineering**: Designing resilient, scalable, recovery-focused platforms
 - **DevOps Best Practices**: Version control, infrastructure reproducibility, monitoring
 - **Azure Services**: AKS, ACR, Managed Identities, OIDC federation, RBAC
-
-# Getting Started
-
-## Prerequisites
-
-- Azure CLI installed and configured
-- Terraform installed
-- kubectl installed
-- Docker installed (for local development)
-- Git for source control
-
-## Infrastructure Deployment
-
-```bash
-cd infra
-terraform init
-terraform plan
-terraform apply
-```
-
-## Deploying ArgoCD & Applications
-
-After infrastructure is provisioned:
-
-```bash
-kubectl apply -f k8s/argocd/root-application.yaml
-```
-
-ArgoCD will automatically discover and deploy all child applications.
-
-## Monitoring & Verification
-
-```bash
-# Check ArgoCD status
-kubectl get applications -n argocd
-
-# View all deployed resources
-kubectl get all -A
-
-# Monitor personal website
-kubectl logs -f deployment/personal-website -n personal-website
-```
+- **Secrets Management**: Azure Key Vault integration, External Secrets Operator, and secure secret delivery patterns
+- **Identity Federation**: Azure Workload Identity and OIDC-based authentication
