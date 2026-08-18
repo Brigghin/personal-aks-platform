@@ -1,4 +1,9 @@
 grafana:
+  admin:
+    existingSecret: monitoring-grafana
+    userKey: admin-user
+    passwordKey: admin-password
+
   ingress:
     enabled: true
     ingressClassName: nginx
