@@ -18,6 +18,7 @@ spec:
 
       helm:
         releaseName: monitoring
+        skipCrds: true
 
         valueFiles:
           - $values/k8s/argocd/values/monitoring-values.yaml
