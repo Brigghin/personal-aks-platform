@@ -23,9 +23,7 @@ singleBinary:
   replicas: 1
 
   persistence:
-    enabled: true
-    storageClass: managed-csi
-    size: 10Gi
+    enabled: false
 
 gateway:
   enabled: false
