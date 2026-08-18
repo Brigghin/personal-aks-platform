@@ -20,7 +20,7 @@ spec:
         releaseName: monitoring
 
         valueFiles:
-          - $values/k8s/monitoring/kube-prometheus-stack-values.yaml
+          - $values/k8s/argocd/values/monitoring-values.yaml
 
     - repoURL: https://github.com/Brigghin/personal-aks-platform.git
       targetRevision: HEAD
