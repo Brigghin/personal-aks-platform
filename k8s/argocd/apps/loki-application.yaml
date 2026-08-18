@@ -21,7 +21,7 @@ spec:
 
         valueFiles:
           - $values/k8s/argocd/values/loki-values.yaml
-
+        
     - repoURL: https://github.com/Brigghin/personal-aks-platform.git
       targetRevision: HEAD
       ref: values
