@@ -20,7 +20,7 @@ spec:
         releaseName: jenkins
 
         valueFiles:
-          - $values/k8s/jenkins/jenkins-values.yaml
+          - $values/k8s/argocd/values/jenkins-values.yaml
 
     - repoURL: https://github.com/Brigghin/personal-aks-platform.git
       targetRevision: HEAD
