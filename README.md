@@ -1,6 +1,6 @@
 # Personal AKS Platform
 
-A cloud-native platform hosted on Azure Kubernetes Service (AKS) for the personal website, demonstrating modern DevOps practices, Infrastructure as Code, GitOps, and Kubernetes orchestration.
+A cloud-native platform built on Azure Kubernetes Service (AKS) to demonstrate modern DevOps practices, Infrastructure as Code, GitOps, Kubernetes orchestration, and secure cloud-native platform operations. The platform was validated by deploying and operating a personal website as a production workload.
 
 This project showcases the design and operation of a production-ready platform using industry-standard tools: Terraform for infrastructure, Docker for containerization, Azure services for cloud hosting, ArgoCD for GitOps-based deployments, and Jenkins for CI/CD automation.
 
@@ -181,9 +181,8 @@ Jenkins:
   - Runs Tests (if configured)
   - Pushes Image to ACR with new tag
   ↓
-Jenkins Updates Kubernetes Manifests
-  - Updates image tag in deployment.yaml
-  - Commits changes to GitHub
+Jenkins publishes container images to Azure Container Registry
+Deployment manifests remain version-controlled in Git and synchronized to the cluster through ArgoCD
   ↓
 GitHub Webhook Notifies ArgoCD
   ↓
@@ -245,6 +244,7 @@ personal-aks-platform/
 │   │   ├── aks/                   # AKS cluster module
 │   │   ├── acr/                   # Container registry module
 │   │   ├── rg/                    # Resource group module
+│   │   ├── kv/                    # Key vault module
 │   │   ├── uai/                   # User assigned identity module
 │   │   └── ra/                    # Role assignment module
 │   ├── main.tf                    # Root Terraform configuration
